@@ -1,15 +1,27 @@
 'use strict'
 
-const weatherMap = new Map([
-    ['London', 10],
-    ['Rome', 11],
-    ['Mexico', 12]
-])
-const reverseMap = new Map()
-for (const [key, value] of weatherMap) {
-    reverseMap.set(value, key)
-}
-console.log(reverseMap);
-const reverseMap2 = new Map([...weatherMap].map(array => array.reverse()))
-console.log(reverseMap2);
+let a = { a: 1}
+let b = { b: 1}
+const weakMap = new WeakMap()
+weakMap.set(a, 'test')
+weakMap.set(b, 'test')
+console.log(weakMap);
+a = null
+console.log(weakMap);
 
+setTimeout(() => {
+    console.log(weakMap);
+
+}, 1000);
+
+let cache = new WeakMap()
+
+function getValue(obj) {
+    if (!cache.has(obj)) {
+        const res =1
+        cache.set(obj, res)
+    }
+    return cache.get(obj)
+}
+
+let result = getValue(b)
