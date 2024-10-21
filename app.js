@@ -1,17 +1,17 @@
 'use strict'
-console.log(Math.sqrt(25))
-console.log(Math.cbrt(27))  // 3;
-console.log(16**(1/4))  // 4;
-console.log(Math.sign(-100))// -1;
-console.log(Math.sign(35));// 1;
-console.log(Math.abs(-100));// 100;
 
-console.log(Math.max(1, 2, 3, 4, 5, 6, 7, 8, 9, '10'));// 10;
-console.log(Math.min(1, 2, 3, 4, 5, -6, 7, 8, 9, 10));// -6;
-const arr = [1, 2, 3, 4, 5, -6, 7, 8, 9, 10]
-console.log(Math.min(...arr));// -6;
+console.log(Math.round(1.6))//2
+console.log(Math.ceil(1.6))//2;
+console.log(Math.floor(1.6))//1;
+console.log(Math.trunc(1.6))//1;
 
-console.log(Math.random())// 0 - 1;
+console.log(1.4999.toFixed(2))//1.50: string;
+console.log(Number((1.4999).toFixed(1)));//1.5: number;
+
+
+
+
+
 
 
 
