@@ -2,26 +2,13 @@
 
 let a = { a: 1}
 let b = { b: 1}
-const weakMap = new WeakMap()
-weakMap.set(a, 'test')
-weakMap.set(b, 'test')
-console.log(weakMap);
+
+const weakSet = new WeakSet([a, b])
+weakSet.add({a: 'test'}, 1)
 a = null
-console.log(weakMap);
+console.log(weakSet);
 
 setTimeout(() => {
-    console.log(weakMap);
+    console.log(weakSet);
 
 }, 1000);
-
-let cache = new WeakMap()
-
-function getValue(obj) {
-    if (!cache.has(obj)) {
-        const res =1
-        cache.set(obj, res)
-    }
-    return cache.get(obj)
-}
-
-let result = getValue(b)
