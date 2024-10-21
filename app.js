@@ -1,17 +1,17 @@
 'use strict'
-console.log(10 === 10.0);
-console.log(0.1 + 0.2 === 0.3);
+console.log(Math.sqrt(25))
+console.log(Math.cbrt(27))  // 3;
+console.log(16**(1/4))  // 4;
+console.log(Math.sign(-100))// -1;
+console.log(Math.sign(35));// 1;
+console.log(Math.abs(-100));// 100;
 
-console.log(Number('10') === 10);
-console.log(+'10' === 10);
-console.log(Number.parseInt('10') === 10);
-console.log(Number.parseInt('10 seconds') === 10);
-console.log(Number.parseInt('seconds 10')); // NaN
-console.log(Number.parseFloat('10.5') === 10.5);
-console.log(Number.parseInt('10.5') === 10);
-console.log(Number.isNaN(Number('10asd')));
-console.log(Number.isFinite(10 / 0));// false
-console.log(Number.isInteger(10.5));// false
+console.log(Math.max(1, 2, 3, 4, 5, 6, 7, 8, 9, '10'));// 10;
+console.log(Math.min(1, 2, 3, 4, 5, -6, 7, 8, 9, 10));// -6;
+const arr = [1, 2, 3, 4, 5, -6, 7, 8, 9, 10]
+console.log(Math.min(...arr));// -6;
+
+console.log(Math.random())// 0 - 1;
 
 
 
