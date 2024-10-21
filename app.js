@@ -1,25 +1,28 @@
 'use strict'
-const array = ['Test', 'Test1', 'Test2', 'Test', 1, false, null]
-const set = new Set(array)
-console.log(set);
-console.log(set.size);
-set.has('Test')
-set.add('Test3')
-set.add(undefined)
-set.delete(null)
-console.log(set.has(null))
-console.log(set);
+const weatherMap = new Map()
+const arrayInMap = [1,2,3]
+weatherMap
+    .set('London', 10)
+    .set('Kyiv', 5)
+    .set('Vinnytsia', 11)
+    .set('Vinnytsia', 11)
+    .set('Rome', 11)
+    .set([1,2,3], 11)
+    .set({a: 1}, 11)
+    .set(arrayInMap, 11)
 
-for (const el of set) {
-    console.log(el);
-}
+console.log(weatherMap.get('Kyiv'))
+console.log(weatherMap.get('test'))
+console.log(weatherMap.get('test'))
+console.log(weatherMap.get([1,2,3]))// search only by link
+console.log(weatherMap.has({a: 1}))// search only by link
+console.log(weatherMap.get(arrayInMap))
+console.log(weatherMap.has(arrayInMap))
+console.log(weatherMap.has('Kyiv'))
+console.log(weatherMap.size);
+console.log(weatherMap);
+weatherMap.delete('Vinnytsia')
+console.log(weatherMap);
+weatherMap.clear()
+console.log(weatherMap);
 
-console.log([...set]);
-
-const setObj = new Set([{a: 1}, {b: 2}, {b: 2}])
-console.log(setObj);
-
-const setStr = new Set('abcd')
-console.log(setStr);
-// const setFromObj = new Set({a: 1}) //Error not iterable
-// const setFromBoolean = new Set(false) //Error not iterable
