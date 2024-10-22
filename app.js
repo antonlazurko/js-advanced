@@ -1,27 +1,13 @@
 'use strict'
 
-const now = new Date()
-console.log(`Hello World, it is ${now}.`)
-console.log(new Date('2020-01-01').toUTCString());
-console.log(new Date('2020-01-01'));
-console.log(new Date('Wed Jan 01 2020 02:00:00 GMT+0200'));
+const date1 = new Date(2024, 10, 15)
+const date2 = new Date(2024, 11, 15)
 
-console.log(new Date(2022, 1, 29))
-console.log(new Date(2 * 24 * 60 * 60 * 1000));// 2 days
+console.log(date2 - date1);
 
-console.log('----------------------------------');
+function getDaysBetweenDates(dateFirst, dateSecond) {
+    return (dateSecond - dateFirst) / (1000 * 60 * 60 * 24);
+}
 
-console.log(now.getFullYear());
-console.log(now.getMonth());
-console.log(now.getDate());
-console.log(now.getDay());
-console.log(now.getHours());
-console.log(now.getMinutes());
-console.log(now.getSeconds());
-
-console.log('----------------------------------');
-
-console.log(new Date(now.setFullYear(2025)));
-
-
+console.log(getDaysBetweenDates(date1, date2));
 
