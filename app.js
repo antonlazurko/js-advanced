@@ -1,9 +1,18 @@
 'use strict'
+const user = {
+    birthday: '05/05/1987'
+}
 
-const date1 = new Date(2024, 10, 15)
-const sameDateTheDate1 = new Date(2024, 10, 15)
-const date2 = new Date(2024, 11, 15)
+function isBirthdayToday(birthday) {
+    const today = new Date();
+    const birthdayMonth = new Date(birthday).getMonth();
+    const birthdayDay = new Date(birthday).getDate();
 
-console.log(date1 > date2);
-console.log(date1 === sameDateTheDate1);//false
-console.log(date1.getTime() === sameDateTheDate1.getTime());
+    console.log(today.getMonth(),  birthdayMonth);
+    console.log(today.getDate(),  birthdayDay);
+
+    return today.getMonth() === birthdayMonth && today.getDate() === birthdayDay;
+}
+
+console.log(isBirthdayToday(user.birthday))
+console.log(isBirthdayToday('10/22/2024'));
