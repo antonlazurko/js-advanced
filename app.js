@@ -1,18 +1,20 @@
 'use strict'
-const user = {
-    birthday: '05/05/1987'
+
+const date = new Date();
+
+console.log(date);
+console.log(new Intl.DateTimeFormat('en-US').format(date));
+const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'short',
+    year: '2-digit',
 }
 
-function isBirthdayToday(birthday) {
-    const today = new Date();
-    const birthdayMonth = new Date(birthday).getMonth();
-    const birthdayDay = new Date(birthday).getDate();
+console.log(navigator.language);
+console.log(new Intl.DateTimeFormat(navigator.language, options).format(date));// вт, 22 жовтня 24 р. о 12:25
 
-    console.log(today.getMonth(),  birthdayMonth);
-    console.log(today.getDate(),  birthdayDay);
 
-    return today.getMonth() === birthdayMonth && today.getDate() === birthdayDay;
-}
 
-console.log(isBirthdayToday(user.birthday))
-console.log(isBirthdayToday('10/22/2024'));
