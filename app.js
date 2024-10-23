@@ -1,18 +1,27 @@
 'use strict'
-const mark1 = performance.now()
 
-setTimeout(() => {
-    const mark2 = performance.now()
-    console.log(mark2 - mark1);
-}, 1000);
-console.log(performance.now());
+const pizzaTimer = time => {
+    console.log(`Timer started for ${time} minutes.`);
+    const interval = setInterval(() => {
+        // const minutest = new Date((time - 1) * 1000).getMinutes()
+        // const secs = new Date((time - 1) * 1000).getSeconds()
+        // console.log(`${minutest}:${secs}`);
+        const end = new Date().getTime() + time * 1000 + 100
+        const options = {
+            minute: 'numeric',
+            second: 'numeric'
+        }
+        console.log(new Intl.DateTimeFormat(navigator.language, options).format(end - new Date()))
 
+        time--;
+        if (time === 0) {
+            clearInterval(interval);
+        }
 
-const intervalId = setInterval(() => {
-    console.log(new Date());
-
-}, 1000);
-
-setTimeout(() => {
-    clearInterval(intervalId)
-}, 5000);
+    }, 1000);
+    setTimeout(() => {
+    clearInterval(interval)
+    console.log('Pizza is ready!')
+    },time * 1000);
+}
+pizzaTimer(2000);
