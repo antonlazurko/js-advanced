@@ -1,11 +1,18 @@
 'use strict'
+const mark1 = performance.now()
 
-const timer = setTimeout((...val) => {
-    val.forEach((value) => {
-        console.log(value);
-    })
-}, 1000, 'Test', 'Test1', 'Test2', 'Test3');
-console.log(timer);
-// clearTimeout(timer);
-console.log('test');
+setTimeout(() => {
+    const mark2 = performance.now()
+    console.log(mark2 - mark1);
+}, 1000);
+console.log(performance.now());
 
+
+const intervalId = setInterval(() => {
+    console.log(new Date());
+
+}, 1000);
+
+setTimeout(() => {
+    clearInterval(intervalId)
+}, 5000);
