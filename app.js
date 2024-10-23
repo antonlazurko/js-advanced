@@ -1,30 +1,32 @@
 'use strict'
 
-const Book = function (title, author){
-    this.title = title
-    this.author = author
-    this.isRead = false
-    // this.read = function () {
-    //     this.isRead = true
-    // }
+const product = {
+    id: 1,
+    name: 'laptop',
+    price: 1000
 }
-Book.prototype.read = function () {
-    this.isRead = true
+
+const Cart = function() {
+    this.products = []
+    this.count = 0
 }
-Book.prototype.cover = 'paper'
-const book = new Book('book', 'Joe Doe')
-const book2 = new Book('book2', 'Joe Doe jr')
-console.log(book);
-console.log(book.hasOwnProperty('cover'));
-book.cover = 'paper2'
-console.log(book.hasOwnProperty('cover'));
-console.log(book.__proto__);
-console.log(book.__proto__ === Book.prototype);
-book.read()
-console.log(book instanceof Book);
-console.log(Book.prototype.isPrototypeOf(Book));
-console.log(Book.prototype.isPrototypeOf(book));
-Array.prototype.first = function () {
-    return this[0]
+Cart.prototype.addProduct = function(product) {
+    if (this.products.find(p => p.product.id === product.id)) {
+        return
+    }
+    this.products.push({product})
+    this.count++
 }
+Cart.prototype.removeProduct = function(product) {
+    const index = this.products.indexOf(product)
+    if (index > -1) {
+        this.products.splice(index, 1)
+        this.count--
+    }
+}
+const cart = new Cart(product)
+cart.addProduct(product)
+cart.removeProduct(product)
+cart.addProduct({...product, id: 2})
+console.log(cart)
 
