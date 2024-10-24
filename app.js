@@ -1,23 +1,21 @@
 'use strict'
+class Car {
+    #vin = 6
+    #changeVin(newVin) {
+        this.#vin = newVin
+        console.log('vin changed to ', newVin);
 
-class Test {
-    static a = 1
-    static hello() {
-        console.log('hello')
     }
-    static {//static block
-        let b = 5
-        this.a = b
+    test(newVin) {
+        const answer = prompt('?')
+        if (newVin && answer === '?') {
+        this.#changeVin(newVin)
     }
-
+    }
+    get vin() {
+        return this.#vin
+    }
 }
-Test.hello()
-console.log(Test.a);
-
-
-// const Test2 = function() {
-// }
-// Test2.hello = function() {
-//     console.log('hello')
-// }
-// Test2.hello()
+const car = new Car()
+car.test(123)
+console.log(car.vin);
