@@ -1,50 +1,56 @@
 'use strict'
 
-class Enemy {
-    #health
-    constructor(health){
-        this.#health = health
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+array.map(num => num * 2).filter(num => num > 10).find(num => num === 12)
+
+class Wallet {
+    balance = 0
+    add(amount) {
+        this.balance += amount
+        return this
     }
-    receiveDamage(damage){
-        this.#health -= damage
-    }
-    get health(){
-        return this.#health
+    remove(amount) {
+        this.balance -= amount
+        return this
     }
 }
+const wallet = new Wallet()
+wallet
+    .add(10)
+    .remove(5)
+    .add(15)
+    .remove(10)
+    .add(20)
+    .remove(5)
+console.log(wallet.balance)
 
-class Sword {
-    #force
-    constructor(force) {
-        this.#force = force
+class Builder {
+    house = {}
+    setDoor(door) {
+        this.house.door = door
+        return this
     }
-    kick(enemy){
-        enemy.receiveDamage(this.#force)
+    setWindow(window) {
+        this.house.window = window
+        return this
+    }
+    setRoof(roof) {
+        this.house.roof = roof
+        return this
+    }
+    setStage(stage) {
+        this.house.stage = stage
+        this.setWindow(this.house.window  * stage)
+        return this
+    }
+    build() {
+        return this.house
     }
 }
-
-class Orc extends Enemy {
-    constructor(health) {
-        super(health)
-    }
-    receiveDamage(damage){
-        if(Math.random() > 0.5){
-            super.receiveDamage(damage)
-        }
-    }
-}
-class Troll extends Enemy {
-}
-
-const orc = new Orc(100)
-const troll = new Troll(80)
-const sword = new Sword(10)
-
-sword.kick(orc)
-sword.kick(orc)
-sword.kick(orc)
-sword.kick(orc)
-sword.kick(troll)
-sword.kick(troll)
-console.log(orc.health)
-console.log(troll.health)
+const house = new Builder()
+    .setDoor(1)
+    .setWindow(2)
+    .setRoof(3)
+    .setStage(4)
+    .build()
+console.log(JSON.stringify(house))
