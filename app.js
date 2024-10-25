@@ -1,23 +1,28 @@
 'use strict'
 
-class Film {
-    #name
-    #author
-    rating
-    #length
-    constructor(name, author, length){
-        this.#name = name
-        this.#author = author
-        this.#length = length
-    }
-    get name (){
-        return this.#name
-    }
-    get author (){
-        return this.#author
-    }
-    get length (){
-        return this.#length
-    }
+const Book = function (title, author) {
+    this.title = title
+    this.author = author
 }
-const film = new Film('name', 'author', 100)
+
+Book.prototype.getSummary = function () {
+    console.log(`${this.title} was written by ${this.author}`);
+
+}
+
+const AudioBook = function (title, author, length) {
+    Book.call(this, title, author)
+    this.length = length
+}
+AudioBook.prototype = Object.create(Book.prototype)
+AudioBook.prototype.constructor = AudioBook
+AudioBook.prototype.log = function () {
+    console.log(`${this.title} is ${this.length} minutes long`);
+}
+const book = new AudioBook('The Hobbit', 'J.R.R. Tolkien', 295)
+book.log()
+
+book.getSummary()
+console.log(book);
+console.log(book instanceof AudioBook);
+console.log(book instanceof Book);
