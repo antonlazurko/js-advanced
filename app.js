@@ -1,60 +1,45 @@
 'use strict'
 
-// const Book = function (title, author) {
-//     this.title = title
-//     this.author = author
-// }
-
-// Book.prototype.getSummary = function () {
-//     console.log(`${this.title} was written by ${this.author}`);
-
-// }
-
-// const AudioBook = function (title, author, length) {
-//     Book.call(this, title, author)
-//     this.length = length
-// }
-// AudioBook.prototype = Object.create(Book.prototype)
-// AudioBook.prototype.constructor = AudioBook
-// AudioBook.prototype.log = function () {
-//     console.log(`${this.title} is ${this.length} minutes long`);
-// }
-// const book = new AudioBook('The Hobbit', 'J.R.R. Tolkien', 295)
-// book.log()
-
-// book.getSummary()
-// console.log(book);
-// console.log(book instanceof AudioBook);
-// console.log(book instanceof Book);
-
-class Book {
-    constructor(title, author) {
-        this.title = title
-        this.author = author
+class Enemy {
+    #health
+    constructor(health){
+        this.#health = health
     }
-    getSummary() {
-        console.log(`${this.title} was written by ${this.author}`);
+    receiveDamage(damage){
+        this.#health -= damage
+    }
+    get health(){
+        return this.#health
     }
 }
-class AudioBook extends Book {
-    constructor(title, author, length) {
-        super(title, author)
-        this.length = length
-    }
-    //override
-    getSummary() {
 
-        console.log(`${this.title} is ${this.length} minutes long`);
+class Sword {
+    #force
+    constructor(force) {
+        this.#force = force
     }
-    log() {
-        const hours = Math.floor(this.length / 60);
-        const minutes = this.length % 60;
-        console.log(`${this.title} is ${hours} hours and ${minutes} minutes long`);
+    kick(enemy){
+        enemy.receiveDamage(this.#force)
     }
 }
-const book = new AudioBook('The Hobbit', 'J.R.R. Tolkien', 295)
-book.getSummary()
-console.log(book);
-book.log()
-console.log(book instanceof AudioBook);
-console.log(book instanceof Book);
+
+class Orc extends Enemy {
+    constructor(health) {
+        super(health)
+    }
+    receiveDamage(damage){
+        if(Math.random() > 0.5){
+            super.receiveDamage(damage)
+        }
+    }
+}
+
+const orc = new Orc(100)
+const sword = new Sword(10)
+sword.kick(orc)
+sword.kick(orc)
+sword.kick(orc)
+sword.kick(orc)
+sword.kick(orc)
+sword.kick(orc)
+console.log(orc.health)
