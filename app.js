@@ -33,13 +33,18 @@ class Orc extends Enemy {
         }
     }
 }
+class Troll extends Enemy {
+}
 
 const orc = new Orc(100)
+const troll = new Troll(80)
 const sword = new Sword(10)
+
 sword.kick(orc)
 sword.kick(orc)
 sword.kick(orc)
 sword.kick(orc)
-sword.kick(orc)
-sword.kick(orc)
+sword.kick(troll)
+sword.kick(troll)
 console.log(orc.health)
+console.log(troll.health)
