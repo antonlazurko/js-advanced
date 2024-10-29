@@ -9,13 +9,10 @@ function req(id) {
     request.send()
 
     request.addEventListener('load', () => {
-        const product = JSON.parse(request.responseText)
-        console.log(product)
+        const {products =  [], limit} = JSON.parse(request.response)
+        const price = products.reduce((acc, product) => acc + product.price, 0)
+        console.log(price / limit)
+        return price
     })
 }
-req(2)
-req(3)
 req('')
-req(4)
-
-console.log('end');// will be executed before the request
