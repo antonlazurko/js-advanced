@@ -1,22 +1,24 @@
 'use strict'
 
-class Character {
-    #inventory = []
-    #health = 10
-    pickItem(item) {
-        this.#inventory.push(item)
-    }
-    receiveDamage(damage) {
-        this.#health -= damage
-    }
+class Treasure {
+    value = 0
 }
 
-class LocalStorage {
-    save(item) {
-        localStorage.setItem('item', JSON.stringify(item))
-    }
-    load() {
-        const item = JSON.parse(localStorage.getItem('item'))
-        return item
+class Coin extends Treasure {
+    value = 1
+}
+
+class Diamond extends Treasure {
+    value = 10
+}
+class Crystal extends Treasure {
+    value = 100
+}
+
+class Inventory {
+    #score
+    pick(treasure) {
+        this.#score += treasure.value
+        console.log(`Score: ${this.#score}`)
     }
 }
