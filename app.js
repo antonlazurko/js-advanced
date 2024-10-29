@@ -1,30 +1,21 @@
 'use strict'
 
-class DB {
-    save(items) {
-        console.log('Saving to DB' + items);
+const baseUrl = 'https://dummyjson.com/'
+const path = 'products/'
 
-    }
+function req(id) {
+    const request = new XMLHttpRequest()
+    request.open('GET', baseUrl + path + (id))
+    request.send()
+
+    request.addEventListener('load', () => {
+        const product = JSON.parse(request.responseText)
+        console.log(product)
+    })
 }
+req(2)
+req(3)
+req('')
+req(4)
 
-class MongoDB extends DB {
-    save(items) {
-        console.log('Saving to MongoDB' + items);
-    }
-}
-
-class ToDoList {
-    items = [1, 2, 3]
-    db
-    constructor(db) {
-        this.db = db
-    }
-    saveToDB() {
-        this.db.save(this.items)
-    }
-}
-
-const list1 = new ToDoList(new MongoDB())
-const list2 = new ToDoList(new DB())
-list1.saveToDB()
-list2.saveToDB()
+console.log('end');// will be executed before the request
