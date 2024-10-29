@@ -3,6 +3,13 @@
 const baseUrl = 'https://dummyjson.com/'
 const path = 'products/'
 
-const res = fetch(baseUrl + path + 1).then(res => res.json())
-
-res.then(data => console.log(data))
+fetch(baseUrl + path)
+    .then(response => response.json())
+    .then(({products}) => {
+        console.log(products)
+        return fetch(baseUrl + path + products[0].id)
+    })
+    .then(response => response.json())
+    .then(product => {
+        console.log(product)
+    })
