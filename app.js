@@ -1,6 +1,6 @@
 'use strict'
 
-const baseUrl = 'https://dummyjsons.com/'
+const baseUrl = 'https://dummyjson.com/'
 const path = 'products/'
 
 fetch(baseUrl + path)
@@ -15,8 +15,10 @@ fetch(baseUrl + path)
         return fetch(baseUrl + path + products[0].id)
     },
     // error => console.log(error)
-)
+    )
     .then(response => response.json())
     .then(product => {
         console.log(product)
-    }).catch(error => console.log(error), )
+    })
+    .catch(error => console.log(error))
+    .finally(() => console.log('finally'))
