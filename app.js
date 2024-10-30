@@ -1,23 +1,30 @@
 'use strict'
 
 const baseUrl = 'https://dummyjson.com/'
-const path = 'productsr'
+const path = 'products'
+const app = document.getElementById('app')
 
-fetch(baseUrl + path)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(response.statusText)
-        }
-        console.log(response);
-        return response.json()
-    })
-    .then((products) => {
+function getData(url, errorMessage) {
+    return fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(errorMessage)
+            }
+            return response.json()
+        })
+}
+getData(baseUrl + path, 'Something went wrong')
+    .then(products => {
         console.log(products)
-        return fetch(baseUrl + path + '/' + products.products[0].id)
+        const randomProduct = Math.floor(Math.random() * products.products.length)
+        return getData(baseUrl + path + '/' + products.products[randomProduct].id, 'Something went wrong')
+    })
+    .then(product => {
+        console.log(product)
+        app.innerHTML = product.title
     })
     .catch(({message}) => {
         console.log(message)
-        const app = document.getElementById('app')
         app.innerHTML = message
         app.style.color = 'red'
     })
