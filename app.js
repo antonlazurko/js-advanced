@@ -1,19 +1,24 @@
 'use strict'
 
-Promise.resolve('Promise resolved2!').then((res) => {
-    console.log(res)
-})
-const promise = new Promise((resolve) => {
-    console.log('Promise created!');
-    //for (let i = 0; i < 1000000000; i++) {}
-    setTimeout(() => {
-        resolve('Promise resolved!')
-    }, 1000)
-})
-promise.then((res) => {
-    console.log(res)
-})
+function myFetch(url) {
+    return new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest()
+        request.open('GET', url)
+        request.send()
+        request.addEventListener('load', function () {
+            this.status === 200 ? resolve(request.response) : reject(new Error(request.statusText))
+        })
+        request.addEventListener('error', () => {
+            reject(new Error(request.statusText))
+        })
+        request.addEventListener('timeout', () => {
+            reject(new Error('timeout'))
+        })
+    })
+}
 
-Promise.reject(new Error('Promise rejected!')).catch((res) => {
-    console.log(res)
+myFetch('https://dummyjson.com/products').then((response) => {
+    console.log('response', JSON.parse(response))
+}).catch((error) => {
+    console.error('error', error)
 })
