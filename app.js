@@ -1,26 +1,19 @@
 'use strict'
 
-const promise = new Promise((resolve, reject) => {
-    console.log('promise initialize');
-    if (Math.random() > 0.5) {
-        reject(new Error('error'))
-    }
-    resolve('success')
+Promise.resolve('Promise resolved2!').then((res) => {
+    console.log(res)
+})
+const promise = new Promise((resolve) => {
+    console.log('Promise created!');
+    //for (let i = 0; i < 1000000000; i++) {}
+    setTimeout(() => {
+        resolve('Promise resolved!')
+    }, 1000)
+})
+promise.then((res) => {
+    console.log(res)
 })
 
-promise
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err))
-
-function timeout(sec) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(sec)
-        }, sec * 1000)
-    })
-}
-timeout(1)
-    .then((data) => {
-        console.log(data)
-        return timeout(2)
-    }).then((data) => console.log(data))
+Promise.reject(new Error('Promise rejected!')).catch((res) => {
+    console.log(res)
+})
