@@ -1,24 +1,26 @@
 'use strict'
 
-function myFetch(url) {
-    return new Promise((resolve, reject) => {
-        const request = new XMLHttpRequest()
-        request.open('GET', url)
-        request.send()
-        request.addEventListener('load', function () {
-            this.status === 200 ? resolve(request.response) : reject(new Error(request.statusText))
-        })
-        request.addEventListener('error', () => {
-            reject(new Error(request.statusText))
-        })
-        request.addEventListener('timeout', () => {
-            reject(new Error('timeout'))
-        })
-    })
+async function getProducts() {
+    try {
+        const productsResponse = await fetch('https://dummyjson.com/products')
+        if (!productsResponse.ok) {
+            throw new Error('Products Error: ', productsResponse.status);
+        }
+        const { products } = await productsResponse.json();
+
+        const productResponse = await fetch(`https://dummyjson.com/products/${products[0].id}`)
+        if (!productResponse.ok) {
+            throw new Error('Product Error: ', productResponse.status);
+        }
+        const product = await productResponse.json();
+        console.log(product);
+
+    } catch (error) {
+        console.error(error);
+    } finally {
+        console.log('finally');
+    }
 }
 
-myFetch('https://dummyjson.com/products').then((response) => {
-    console.log('response', JSON.parse(response))
-}).catch((error) => {
-    console.error('error', error)
-})
+getProducts();
+console.log('end');
