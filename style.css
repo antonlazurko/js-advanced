@@ -1,14 +1,10 @@
 .wrapper{
-    width: 400px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 .inner{
-    width: 200px;
-    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +12,10 @@
 }
 .box{
     width: 100px;
-    height: 100px;
-    background-color: blueviolet;
+    text-align: center;
+    border: 1px solid black;
     margin: 10px;
+}
+.active{
+    color: red;
 }
