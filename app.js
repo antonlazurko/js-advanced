@@ -11,17 +11,24 @@ async function getProductById(id) {
     const product = await response.json();
     return product;
 }
+async function getProductByIdWithError(id) {
+    const response = await fetch(`https://dummyjson.com/productss/${id}`);
+    const product = await response.json();
+    return product;
+}
 
 async function main() {
     const products = await allProducts();
-    console.log(products);
-    // for (const {id} of products) {
-    //     const product = await getProductById(id);
-    //     console.log(product);
-    // }
+
     const promises = products.map(({id}) => getProductById(id));
-    const productsWithDetails = await Promise.all(promises);
-    console.log(productsWithDetails);
+
+    // const productsWithDetails = await Promise.all([...promises, getProductByIdWithError()]);
+    // console.log(productsWithDetails);
+
+    const productsWithDetails2 = await Promise.allSettled([...promises, getProductByIdWithError()]);
+    // console.log(productsWithDetails2.map(({status, value}) => ({status, value})));
+    const productsWithDetails3 = await Promise.race([getProductByIdWithError(), ...promises, allProducts()]);
+    console.log(productsWithDetails3);
 }
 
 main()
