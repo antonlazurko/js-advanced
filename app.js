@@ -1,19 +1,31 @@
 'use strict'
 
-async function getProducts() {
+const getApiUrl = (latitude, longitude) => `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`;
+
+async function getCoordinates() {
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                resolve({latitude, longitude});
+            },
+            (error) => {
+                reject(error);
+            })
+    })
+}
+
+async function getMyCity() {
     try {
-        const productsResponse = await fetch('https://dummyjson.com/products')
-        if (!productsResponse.ok) {
+        const { latitude, longitude } = await getCoordinates();
+
+        const response = await fetch(getApiUrl(latitude, longitude));
+
+        if (response.status !== 200) {
             throw new Error('Products Error: ', productsResponse.status);
         }
-        const { products } = await productsResponse.json();
-
-        const productResponse = await fetch(`https://dummyjson.com/products/${products[0].id}`)
-        if (!productResponse.ok) {
-            throw new Error('Product Error: ', productResponse.status);
-        }
-        const product = await productResponse.json();
-        console.log(product);
+        const { city } = await response.json();
+        console.log(city);
 
     } catch (error) {
         console.error(error);
@@ -22,5 +34,4 @@ async function getProducts() {
     }
 }
 
-getProducts();
-console.log('end');
+getMyCity()
