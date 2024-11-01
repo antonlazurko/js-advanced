@@ -1,25 +1,21 @@
 'use strict'
 
-console.log(document);
-const element = document.querySelector('#app');
-const elements = document.querySelectorAll('meta');
-console.log(element);
-console.log(elements);
-
-element.classList.add('active');
-element.textContent = 'Hello World';
-
-const subElement = document.createElement('h1');
-const subElement2 = document.createElement('h1');
-const subElement3 = document.createElement('h1');
-subElement.textContent = 'Hello World';
-subElement2.textContent = 'Hello';
-subElement3.textContent = 'World';
-element.append(subElement);
-element.prepend(subElement2);
-element.after(subElement3);
-
+const app = document.querySelector('#app');
+app.addEventListener('mouseenter', (event) => {
+    console.log('enter');
+})
+app.addEventListener('mouseleave', (event) => {
+    console.log('leave');
+})
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        console.log('Escape key pressed');
+    }
+});
+const btn = document.querySelector('button');
+btn.addEventListener('click', generate);
 function generate(event) {
+    console.log(this);
 
     console.log(event.target.getBoundingClientRect());
 
@@ -36,5 +32,5 @@ function generate(event) {
         top: window.scrollY + rect.top,
         behavior: 'smooth'
     })
-
+    btn.removeEventListener('click', generate);
 }
