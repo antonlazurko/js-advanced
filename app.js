@@ -1,36 +1,32 @@
 'use strict'
 
-const app = document.querySelector('#app');
-app.addEventListener('mouseenter', (event) => {
-    console.log('enter');
-})
-app.addEventListener('mouseleave', (event) => {
-    console.log('leave');
-})
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        console.log('Escape key pressed');
+const btn = document.querySelector('button')
+const wrapper = document.querySelector('.wrapper')
+const inner = document.querySelector('.inner')
+
+btn.addEventListener('click', function (event) {
+    console.log('i am button');
+
+    if (this.style.backgroundColor === 'blue') {
+        this.style.backgroundColor = 'red'
+    } else {
+        this.style.backgroundColor = 'blue'
     }
-});
-const btn = document.querySelector('button');
-btn.addEventListener('click', generate);
-function generate(event) {
-    console.log(this);
+    if (this === btn) {
+        // event.stopPropagation();
 
-    console.log(event.target.getBoundingClientRect());
+    }
+})
 
-    console.log('X offset: ', window.scrollX);
-    console.log('Y offset: ', window.scrollY);
-    console.log('client width: ', document.documentElement.clientWidth);
-    console.log('client height: ', document.documentElement.clientHeight);
+wrapper.addEventListener('click', function (event) {
+    console.log('i am wrapper');
 
-    const downEl = document.querySelector('.down');
-    const rect = downEl.getBoundingClientRect();
+    this.style.backgroundColor = 'green'
+}, true)
 
-    window.scrollTo({
-        left: window.scrollX + rect.left,
-        top: window.scrollY + rect.top,
-        behavior: 'smooth'
-    })
-    btn.removeEventListener('click', generate);
-}
+inner.addEventListener('click', function (event) {
+    console.log('i am inner');
+    console.log(event.currentTarget);
+
+    this.style.backgroundColor = 'yellow'
+})
