@@ -1,6 +1,6 @@
 'use strict';
 
-import { add, sub } from './calc.js';
+import { add, sub, res } from './calc.js';
 
 console.log('test app');
 
@@ -12,3 +12,7 @@ const interval = setInterval(() => {
         clearInterval(interval)
     }, 5000);
 }, 1000)
+
+
+
+console.log(res);

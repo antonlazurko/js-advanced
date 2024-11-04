@@ -13,3 +13,9 @@ setTimeout(() => {
         return first * second
     }
 }, 1500);
+
+async function getProducts() {
+    const res = await fetch('https://dummyjson.com/products');
+    return res.json();
+}
+export const res = await getProducts();
