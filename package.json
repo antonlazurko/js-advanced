@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "server": "live-server --port=9595"
+    "server": "live-server --port=9595",
+    "build": "rollup"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,14 @@
     "url": "https://github.com/antonlazurko/js-advanced/issues"
   },
   "homepage": "https://github.com/antonlazurko/js-advanced#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.7"
+  },
+  "devDependencies": {
+    "rollup": "^4.24.4"
+  },
+  "peerDependencies": {},
+  "peerDependenciesMeta": {},
+  "optionalDependencies": {}
 }
