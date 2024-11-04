@@ -1,1 +1,19 @@
-{}
+{
+  "name": "js-advanced",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "server": "live-server --port=9595"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonlazurko/js-advanced.git"
+  },
+  "author": "Anton Lazurko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonlazurko/js-advanced/issues"
+  },
+  "homepage": "https://github.com/antonlazurko/js-advanced#readme",
+  "description": ""
+}
