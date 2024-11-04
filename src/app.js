@@ -1,5 +1,2 @@
 'use strict'
-
-function a(params) {
-
-}
+import './app.css'
