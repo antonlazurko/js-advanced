@@ -1,4 +1,7 @@
-'use strict'
+'use strict';
 
-const inner = document.querySelector('.inner')
-console.log(inner.parentElement);
+(function () {
+    const { calc } = App;
+    console.log(calc.add(1, 3));
+    console.log(calc.sub(7, 0));
+})()
