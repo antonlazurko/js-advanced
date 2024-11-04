@@ -1,18 +1,7 @@
 'use strict';
 
-import { add, sub, res } from './calc.js';
-
-console.log('test app');
-
+import { add, sub } from './calc.js';
+const a = 2
+console.log(a);
 console.log(sub(7, 0));
-
-const interval = setInterval(() => {
-    console.log(add(1, 3));
-    setTimeout(() => {
-        clearInterval(interval)
-    }, 5000);
-}, 1000)
-
-
-
-console.log(res);
+console.log(add(7, 0));
