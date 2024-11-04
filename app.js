@@ -1,7 +1,5 @@
 'use strict';
+const { add, sub } = require('./calc');
 
-(function () {
-    const { calc } = App;
-    console.log(calc.add(1, 3));
-    console.log(calc.sub(7, 0));
-})()
+console.log(add(1, 3));
+console.log(sub(7, 0));
