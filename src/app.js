@@ -19,6 +19,7 @@ class App {
         }
         const view = this.routes.find(({path}) => path === window.location.hash.slice(1)).view
         this.currentView = new view(this.appState)
+
         this.currentView.render()
     }
 }

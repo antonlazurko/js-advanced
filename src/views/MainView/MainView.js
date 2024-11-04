@@ -1,6 +1,7 @@
 import onChange from 'on-change'
 
-import {AbstractView} from '../../common/AbstractView'
+import { AbstractView } from '../../common/AbstractView'
+import { Header } from '../../components/Header/Header'
 
 export class MainView extends AbstractView {
 
@@ -19,7 +20,7 @@ export class MainView extends AbstractView {
 
     useAppState(path) {
         if (path === 'favorites') {
-            this.render()
+            console.log(path);
         }
     }
     render() {
@@ -31,6 +32,10 @@ export class MainView extends AbstractView {
         `
         this.app.innerHTML = ''
         this.app.append(main)
-        this.appState.favorites.push('#favorites')
+        this.renderHeader()
+    }
+    renderHeader() {
+        const header = new Header(this.appState).render()
+        this.app.prepend(header)
     }
 }
