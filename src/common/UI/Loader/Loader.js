@@ -4,13 +4,12 @@ import './Loader.css'
 
 export class Loader extends CustomComponent {
     constructor() {
-        super('div')
+        super('div', 'loader-wrapper')
     }
     render() {
         const el = super.render()
         this.el.setAttribute('role', 'status')
         this.el.setAttribute('aria-live', 'polite')
-        this.el.classList.add('loader-wrapper')
         return el
     }
     template() {

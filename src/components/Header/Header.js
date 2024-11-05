@@ -3,7 +3,7 @@ import { CustomComponent } from '../../common/CustomComponent'
 import './Header.css'
 export class Header extends CustomComponent {
     constructor(appState) {
-        super('header', appState)
+        super('header', 'header', appState)
     }
     template() {
         const { favorites } = this.appState

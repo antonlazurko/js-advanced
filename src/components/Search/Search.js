@@ -4,12 +4,14 @@ import './Search.css'
 
 export class Search extends CustomComponent {
     constructor(appState) {
-        super('div', appState)
+        super('div', 'search', appState)
     }
     render() {
         const el = super.render()
-        this.el.classList.add('search')
-        this.el.querySelector('button').addEventListener('click', this.search.bind(this))
+
+        this.el.querySelector('button').addEventListener('click', () => {
+            this.search()
+        })
         this.el.querySelector('input').addEventListener('keydown', ({code}) => {
             if (code === 'Enter') {
                 this.search()
@@ -19,6 +21,9 @@ export class Search extends CustomComponent {
     }
     search() {
         const query = this.el.querySelector('input').value
+        if (query.trim() === '') {
+            return
+        }
         this.appState.searchQuery = query
     }
     template() {
