@@ -2,6 +2,7 @@ import onChange from 'on-change'
 
 import { AbstractView } from '../../common/AbstractView'
 import { Search } from '../../components/Search/Search'
+import { BookList } from '../../components/BookList/BookList'
 
 import { getBooks } from '../../services/getBooks'
 
@@ -28,14 +29,18 @@ export class MainView extends AbstractView {
     }
     async useState(path) {
         if (path === 'searchQuery') {
-            this.loading = true
+            this.state.loading = true
             const data = await getBooks(this.state.searchQuery, this.state.offset)
-            this.loading = false
+            this.state.loading = false
             this.state.list = data.docs
+        }
+        if (path === 'loading' || path === 'list') {
+            this.render()
         }
     }
 
     render() {
+
         const main = document.createElement('main')
         main.innerHTML = `
             <h1>Books Search</h1>
@@ -45,6 +50,8 @@ export class MainView extends AbstractView {
 
         const search = new Search(this.state).render()
         main.append(search)
+        const bookList = new BookList(this.appState, this.state).render()
+        main.append(bookList)
         this.app.innerHTML = ''
 
         this.renderHeader()
