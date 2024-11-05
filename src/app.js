@@ -1,18 +1,23 @@
 'use strict'
 import { MainView } from './views/MainView/MainView.js'
+import { FavoritesView } from './views/FavoritesView/FavoritesView.js'
 import './app.css'
 import { NotFoundView } from './views/NotFoundView/NotFoundView.js'
+import { getFavoritesFromStorageAndSet } from "./utils.js";
 
 class App {
     routesMap = new Map([
-        ['', MainView]
+        ['', MainView],
+        ['favorites', FavoritesView]
     ])
     appState = {
         favorites: []
     }
     constructor() {
         window.addEventListener('hashchange',this.route.bind(this))
+        getFavoritesFromStorageAndSet(this.appState)
         this.route()
+
     }
     route(){
         if (this.currentView) {

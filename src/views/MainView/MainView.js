@@ -6,6 +6,8 @@ import { BookList } from '../../components/BookList/BookList'
 
 import { getBooks } from '../../services/getBooks'
 
+import { setFavoritesToStorage } from '../../utils'
+
 export class MainView extends AbstractView {
 
     state = {
@@ -22,9 +24,14 @@ export class MainView extends AbstractView {
         this.state = onChange(this.state, this.useState.bind(this))
         this.setTitle('Books Search')
     }
+    destroy() {
+        onChange.unsubscribe(this.appState)
+        onChange.unsubscribe(this.state)
+    }
 
     useAppState(path) {
         if (path === 'favorites') {
+            setFavoritesToStorage(this.appState)
             this.render();
         }
     }
