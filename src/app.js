@@ -4,9 +4,9 @@ import './app.css'
 import { NotFoundView } from './views/NotFoundView/NotFoundView.js'
 
 class App {
-    routes = [
-        { path: '', view: MainView }
-    ]
+    routesMap = new Map([
+        ['', MainView]
+    ])
     appState = {
         favorites: []
     }
@@ -18,7 +18,9 @@ class App {
         if (this.currentView) {
             this.currentView.destroy()
         }
-        const view = this.routes.find(({path}) => path === window.location.hash.slice(1))?.view || NotFoundView
+        const currentPath = window.location.hash.slice(1)
+
+        const view = this.routesMap.get(currentPath) || NotFoundView
 
         this.currentView = new view(this.appState)
 

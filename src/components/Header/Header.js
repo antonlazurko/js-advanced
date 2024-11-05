@@ -1,18 +1,13 @@
-import { Wrapper } from '../../common/Wrapper'
-
-export class Header extends Wrapper {
+export class Header {
     constructor(appState) {
-        super()
-        this.appState =appState
+        this.appState = appState
+
     }
     render() {
+        this.el = document.createElement('header')
         this.el.innerHTML = ''
         this.el.classList.add('header')
-        this.el.innerHTML = `
-            <header>
-                <img src="/static/icons/logo.svg" alt=''Logo/>
-            </header>
-        `
+        this.el.innerHTML = `<img src="/static/icons/logo.svg" alt=''Logo/>`
         return this.el
     }
 }

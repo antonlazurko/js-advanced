@@ -1,7 +1,6 @@
 import onChange from 'on-change'
 
 import { AbstractView } from '../../common/AbstractView'
-import { Header } from '../../components/Header/Header'
 
 export class MainView extends AbstractView {
 
@@ -24,18 +23,15 @@ export class MainView extends AbstractView {
         }
     }
     render() {
-        const main = document.createElement('div')
+        const main = document.createElement('main')
         main.innerHTML = `
             <h1>Books Search</h1>
             <p>Welcome to Books Library App</p>
             <p>Favorite books count: ${this.appState.favorites.length}</p>
         `
         this.app.innerHTML = ''
-        this.app.append(main)
         this.renderHeader()
-    }
-    renderHeader() {
-        const header = new Header(this.appState).render()
-        this.app.prepend(header)
+        this.app.append(main)
+        this.renderFooter()
     }
 }
