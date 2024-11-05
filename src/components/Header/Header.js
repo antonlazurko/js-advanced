@@ -1,4 +1,4 @@
-import { CustomComponent } from '../common/CustomComponent'
+import { CustomComponent } from '../../common/CustomComponent'
 
 import './Header.css'
 export class Header extends CustomComponent {
