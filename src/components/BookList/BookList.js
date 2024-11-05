@@ -10,14 +10,13 @@ export class BookList extends CustomComponent {
         this.parentState = parentState
     }
     render() {
-        const { loading, total, list } = this.parentState
+        const { loading, list } = this.parentState
 
         if (loading) {
             return new Loader().render()
         }
         const el = super.render()
 
-        this.el.innerHTML = `<h2>Find ${total} books</h2>`
 
         const booksGrid = document.createElement('div')
         booksGrid.classList.add('books-grid')

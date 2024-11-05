@@ -35,30 +35,34 @@ export class MainView extends AbstractView {
             this.render();
         }
     }
+
     async useState(path) {
+
         if (path === 'searchQuery') {
             this.state.loading = true
-            const data = await getBooks(this.state.searchQuery, this.state.offset)
+            const { docs, numFound } = await getBooks(this.state.searchQuery, this.state.offset)
+
             this.state.loading = false
-            this.state.list = data.docs
-            this.state.total = data.numFound
+            this.state.list = docs
+            this.state.total = numFound
         }
-        if (path === 'loading' || path === 'list') {
+        if (path === 'loading' || path === 'list' || path === 'total') {
             this.render()
         }
     }
 
     render() {
+        console.log(this.state.total);
 
         const main = document.createElement('main')
-        main.innerHTML = `
-            <h1>Books Search</h1>
-            <p>Welcome to Books Library App</p>
-            <p>Favorite books count: ${this.appState.favorites.length}</p>
-        `
+
+        main.innerHTML = `<h1>Books Search</h1>`
 
         const search = new Search(this.state).render()
         main.append(search)
+        if (this.state.total) {
+            main.innerHTML += `<p>${this.state.total} books found</p>`
+        }
         const bookList = new BookList(this.appState, this.state).render()
         main.append(bookList)
         this.app.innerHTML = ''

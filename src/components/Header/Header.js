@@ -12,7 +12,7 @@ export class Header extends CustomComponent {
             <a href="/" class="nav__link"><img src="/static/icons/logo.svg" alt=''Logo/></a>
         </div>
         <nav class="nav">
-            <a href="#search" class="nav__link">
+            <a href="/" class="nav__link">
                 <img src="/static/icons/search.svg" alt=''Search icon/>
                 Book Search
             </a>

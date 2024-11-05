@@ -1,7 +1,7 @@
 import onChange from 'on-change'
 
 import { AbstractView } from '../../common/AbstractView'
-import { BookCard } from '../../components/BookCard/BookCard'
+import { BookList } from '../../components/BookList/BookList'
 
 import { setFavoritesToStorage } from '../../utils'
 
@@ -28,13 +28,8 @@ export class FavoritesView extends AbstractView {
         const main = document.createElement('main')
         main.innerHTML = `
             <h1>Favorite books</h1>        `
-        const booksGrid = document.createElement('div')
-        booksGrid.classList.add('books-grid')
-        main.append(booksGrid)
-
-        for (const book of favorites) {
-            booksGrid.append(new BookCard(this.appState, book).render())
-        }
+            const bookList = new BookList(this.appState, {list: favorites}).render()
+            main.append(bookList)
 
         this.app.innerHTML = ''
 
