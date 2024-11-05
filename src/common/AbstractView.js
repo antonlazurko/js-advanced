@@ -1,3 +1,7 @@
+import { Header } from '../components/Header/Header'
+import { Footer } from '../components/Footer/Footer'
+import { Search } from '../components/Search/Search'
+
 export class AbstractView {
     constructor() {
         this.app = document.getElementById('root')
@@ -7,9 +11,18 @@ export class AbstractView {
         document.title = title
     }
     render(){
-        return
+        return this.app
     }
     destroy(){
         return
+    }
+
+    renderHeader() {
+        const header = new Header(this.appState).render()
+        this.app.prepend(header)
+    }
+    renderFooter() {
+        const footer = new Footer().render()
+        this.app.appendChild(footer)
     }
 }
