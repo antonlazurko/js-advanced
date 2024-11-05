@@ -10,6 +10,7 @@ export class MainView extends AbstractView {
 
     state = {
         list: [],
+        total: 0,
         loading: false,
         searchQuery: undefined,
         offset: 0
@@ -24,7 +25,7 @@ export class MainView extends AbstractView {
 
     useAppState(path) {
         if (path === 'favorites') {
-            console.log(path);
+            this.render();
         }
     }
     async useState(path) {
@@ -33,6 +34,7 @@ export class MainView extends AbstractView {
             const data = await getBooks(this.state.searchQuery, this.state.offset)
             this.state.loading = false
             this.state.list = data.docs
+            this.state.total = data.numFound
         }
         if (path === 'loading' || path === 'list') {
             this.render()

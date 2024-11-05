@@ -1,5 +1,6 @@
 import { CustomComponent } from "../../common/CustomComponent";
 import { Loader } from '../../common/UI/Loader/Loader'
+import { BookCard } from "../BookCard/BookCard";
 
 import './BookList.css'
 
@@ -9,13 +10,17 @@ export class BookList extends CustomComponent {
         this.parentState = parentState
     }
     render() {
+        const { loading, total, list } = this.parentState
 
-        if (this.parentState.loading) {
+        if (loading) {
             return new Loader().render()
         }
         const el = super.render()
         this.el.classList.add('book_list')
-        this.el.innerHTML = `<h1>Find ${this.parentState.list.length} books</h1>`
+        this.el.innerHTML = `<h1>Find ${total} books</h1>`
+        for (const book of list) {
+            this.el.append(new BookCard(this.appState, book).render())
+        }
         return el
     }
 
