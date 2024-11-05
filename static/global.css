@@ -30,9 +30,8 @@ html {
 body{
     font-family: 'Public Sans', sans-serif;
     color: var(--black);
-    background-color: var(--default-bg);
+    background-color: var(--light-grey);
 }
-
 :root{
     --black: #121212;
     --white: #fafafa;
@@ -42,14 +41,26 @@ body{
     --grey-color: #DEDEDE;
 }
 #root{
+    display: flex;
+    flex-direction: column;
     max-width: 80rem;
     margin: 0 auto;
     padding: 1rem;
+    min-height: 100vh;
+}
+main{
+    flex: 1;
+    background-color: var(--default-bg);
+    border-radius: 1rem;
 }
 a{
     text-decoration: none;
     color: var(--black);
+    transition: color 0.3s ease;
 }
 a:visited{
     color: var(--black);
+}
+a:hover {
+    color: #3498db;
 }

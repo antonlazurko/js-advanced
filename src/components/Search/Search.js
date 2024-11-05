@@ -21,9 +21,11 @@ export class Search extends CustomComponent {
     }
     search() {
         const query = this.el.querySelector('input').value
+
         if (query.trim() === '') {
             return
         }
+
         this.appState.searchQuery = query
     }
     template() {

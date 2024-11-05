@@ -40,11 +40,11 @@ export class MainView extends AbstractView {
 
         if (path === 'searchQuery') {
             this.state.loading = true
-            const { docs, numFound } = await getBooks(this.state.searchQuery, this.state.offset)
+            const { items, totalItems } = await getBooks(this.state.searchQuery)
 
             this.state.loading = false
-            this.state.list = docs
-            this.state.total = numFound
+            this.state.list = items
+            this.state.total = totalItems
         }
         if (path === 'loading' || path === 'list' || path === 'total') {
             this.render()
@@ -52,8 +52,6 @@ export class MainView extends AbstractView {
     }
 
     render() {
-        console.log(this.state.total);
-
         const main = document.createElement('main')
 
         main.innerHTML = `<h1>Books Search</h1>`

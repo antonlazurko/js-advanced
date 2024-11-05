@@ -1,8 +1,8 @@
 import {API_SEARCH_URL} from "../const";
 
-export async function getBooks(query, offset) {
+export async function getBooks(query) {
     try {
-        const result = await fetch(`${API_SEARCH_URL}q=${query}&offset=${offset}&limit=10`)
+        const result = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
         if (result.status !== 200) {
             throw new Error(result.status)
         }
