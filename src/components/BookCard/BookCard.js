@@ -39,7 +39,7 @@ export class BookCard extends CustomComponent {
             <div class="card__info">
                 <h4 class="card__tag">${subject || 'N/A'}</h4>
                 <h3 class="card__title">${title || 'N/A'}</h3>
-                <p class="card__author">${author_name.length ? author_name.join(', ') : 'N/A'}</p>
+                <p class="card__author">${author_name.length ? author_name[0] : 'N/A'}</p>
                 <div class="card__btn-wrapper">
                     <button class="card__btn ${this.isExistInFavorites ? 'card__existed' : ''}">
                         <img src="/static/icons/${this.isExistInFavorites ? 'favorites' : 'favorites-white'}.svg" alt="Favorites icon" />

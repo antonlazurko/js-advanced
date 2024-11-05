@@ -16,10 +16,15 @@ export class BookList extends CustomComponent {
             return new Loader().render()
         }
         const el = super.render()
-        this.el.classList.add('book_list')
-        this.el.innerHTML = `<h1>Find ${total} books</h1>`
+
+        this.el.innerHTML = `<h2>Find ${total} books</h2>`
+
+        const booksGrid = document.createElement('div')
+        booksGrid.classList.add('books-grid')
+        el.append(booksGrid)
+
         for (const book of list) {
-            this.el.append(new BookCard(this.appState, book).render())
+            booksGrid.append(new BookCard(this.appState, book).render())
         }
         return el
     }
