@@ -1114,15 +1114,15 @@
 	        const { favorites } = this.appState;
 	        return `
         <div>
-            <a href="/" class="nav__link"><img src="/static/icons/logo.svg" alt=''Logo/></a>
+            <a href="/" class="nav__link"><img src="./static/icons/logo.svg" alt='Logo'/></a>
         </div>
         <nav class="nav">
             <a href="/" class="nav__link">
-                <img src="/static/icons/search.svg" alt=''Search icon/>
+                <img src="./static/icons/search.svg" alt='Search icon'/>
                 Book Search
             </a>
             <a href="#favorites" class="nav__link">
-                <img src="/static/icons/favorites.svg" alt=''Favorites icon/>
+                <img src="./static/icons/favorites.svg" alt='Favorites icon'/>
                 Favorites
             </a>
             <div class="nav__count">${favorites.length}</div>
@@ -1138,7 +1138,7 @@
 	        return `
         <div class="footer__container">
             <div class="footer__logo">
-                <img src="/static/icons/logo.svg" alt="Logo" />
+                <img src="./static/icons/logo.svg" alt="Logo" />
             </div>
             <nav class="footer__nav">
                 <a href="#">Book Search</a>
@@ -1148,13 +1148,13 @@
             </nav>
             <div class="footer__social">
                 <a href="https://facebook.com" aria-label="Facebook">
-                    <img src="/static/icons/facebook.png" alt="Facebook" />
+                    <img src="./static/icons/facebook.png" alt="Facebook" />
                 </a>
                 <a href="https://instagram.com" aria-label="Instagram">
-                    <img src="/static/icons/instagram.png" alt="Instagram" />
+                    <img src="./static/icons/instagram.png" alt="Instagram" />
                 </a>
                 <a href="https://linkedin.com" aria-label="Linkedin">
-                    <img src="/static/icons/linkedin.png" alt="Linkedin"/>
+                    <img src="./static/icons/linkedin.png" alt="Linkedin"/>
                 </a>
             </div>
             <div class="footer__copyright">
@@ -1198,10 +1198,10 @@
                 placeholder="Search book or author..."
                 class="search__input"
                 value="${this.appState.searchQuery ?? ''}">
-                <img class="search__img" src="/static/icons/search.svg" alt="Search icon"/>
+                <img class="search__img" src="./static/icons/search.svg" alt="Search icon"/>
             </div>
             <button class="search__btn" aria-label="Search">
-                <img src="/static/icons/search-white.svg" alt="Search icon"/>
+                <img src="./static/icons/search-white.svg" alt="Search icon"/>
             </button>
         `
 	    }
@@ -1289,7 +1289,7 @@
                 <p class="card__author">${authors.length ? authors[0] : 'N/A'}</p>
                 <div class="card__btn-wrapper">
                     <button class="card__btn ${this.isExistInFavorites ? 'card__existed' : ''}">
-                        <img src="/static/icons/${this.isExistInFavorites ? 'favorites' : 'favorites-white'}.svg" alt="Favorites icon" />
+                        <img src="./static/icons/${this.isExistInFavorites ? 'favorites' : 'favorites-white'}.svg" alt="Favorites icon" />
                     </button>
                 </div>
             </div>
