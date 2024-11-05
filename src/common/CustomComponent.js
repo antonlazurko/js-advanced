@@ -1,8 +1,7 @@
-import { CustomComponent } from '../common/CustomComponent'
-
-export class Footer extends CustomComponent {
-    constructor(appState) {
-        super('footer', appState)
+export class CustomComponent {
+    constructor(elementType, appState) {
+        this.elementType = elementType
+        this.appState = appState
     }
     render() {
         this.el = document.createElement(this.elementType)
@@ -12,6 +11,6 @@ export class Footer extends CustomComponent {
         return this.el
     }
     template() {
-        return `<h2>Footer</h2><img src="/static/icons/logo.svg" alt=''Logo/>`
+        return ''
     }
 }

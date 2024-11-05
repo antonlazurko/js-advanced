@@ -1,0 +1,52 @@
+html {
+    font-size: 87.5%;
+}
+@media (min-width: 576px) {
+    html {
+        font-size: 93.75%;
+    }
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 100%;
+    }
+}
+@media (min-width: 992px) {
+    html {
+        font-size: 106.25%;
+    }
+}
+@media (min-width: 1200px) {
+    html {
+        font-size: 112.5%;
+    }
+}
+@media (min-width: 1400px) {
+    html {
+        font-size: 125%;
+    }
+}
+
+body{
+    font-family: 'Public Sans', sans-serif;
+    color: var(--black);
+    background-color: var(--default-bg);
+}
+
+:root{
+    --black: #121212;
+    --white: #fafafa;
+    --default-bg: #FCFDFD;
+}
+#root{
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+a{
+    text-decoration: none;
+    color: var(--black);
+}
+a:visited{
+    color: var(--black);
+}

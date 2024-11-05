@@ -30,6 +30,7 @@ export class MainView extends AbstractView {
             <p>Favorite books count: ${this.appState.favorites.length}</p>
         `
         this.app.innerHTML = ''
+
         this.renderHeader()
         this.app.append(main)
         this.renderFooter()
