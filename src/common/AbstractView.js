@@ -23,8 +23,6 @@ export class AbstractView {
     }
     renderFooter() {
         const footer = new Footer().render()
-        const search = new Search(this.appState).render()
-        footer.append(search)
         this.app.appendChild(footer)
     }
 }

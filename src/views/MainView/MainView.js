@@ -1,6 +1,9 @@
 import onChange from 'on-change'
 
 import { AbstractView } from '../../common/AbstractView'
+import { Search } from '../../components/Search/Search'
+
+import { getBooks } from '../../services/getBooks'
 
 export class MainView extends AbstractView {
 
@@ -14,6 +17,7 @@ export class MainView extends AbstractView {
         super()
         this.appState = appState
         this.appState = onChange(this.appState, this.useAppState.bind(this))
+        this.state = onChange(this.state, this.useState.bind(this))
         this.setTitle('Books Search')
     }
 
@@ -22,6 +26,15 @@ export class MainView extends AbstractView {
             console.log(path);
         }
     }
+    async useState(path) {
+        if (path === 'searchQuery') {
+            this.loading = true
+            const data = await getBooks(this.state.searchQuery, this.state.offset)
+            this.loading = false
+            this.state.list = data.docs
+        }
+    }
+
     render() {
         const main = document.createElement('main')
         main.innerHTML = `
@@ -29,6 +42,9 @@ export class MainView extends AbstractView {
             <p>Welcome to Books Library App</p>
             <p>Favorite books count: ${this.appState.favorites.length}</p>
         `
+
+        const search = new Search(this.state).render()
+        main.append(search)
         this.app.innerHTML = ''
 
         this.renderHeader()
