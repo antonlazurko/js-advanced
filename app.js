@@ -1114,10 +1114,10 @@
 	        const { favorites } = this.appState;
 	        return `
         <div>
-            <a href="/" class="nav__link"><img src="./static/icons/logo.svg" alt='Logo'/></a>
+            <a href="" class="nav__link"><img src="./static/icons/logo.svg" alt='Logo'/></a>
         </div>
         <nav class="nav">
-            <a href="/" class="nav__link">
+            <a href="" class="nav__link">
                 <img src="./static/icons/search.svg" alt='Search icon'/>
                 Book Search
             </a>
@@ -1143,18 +1143,20 @@
             <nav class="footer__nav">
                 <a href="#">Book Search</a>
                 <a href="#favorites">Favorites</a>
-                <a href="#services">Services</a>
                 <a href="#contact">Contacts</a>
             </nav>
             <div class="footer__social">
-                <a href="https://facebook.com" aria-label="Facebook">
-                    <img src="./static/icons/facebook.png" alt="Facebook" />
+                <a href="https://www.facebook.com/AntonLazurko/" aria-label="Facebook" target="_blank">
+                    <img src="./static/icons/facebook.svg" alt="Facebook" />
                 </a>
-                <a href="https://instagram.com" aria-label="Instagram">
-                    <img src="./static/icons/instagram.png" alt="Instagram" />
+                <a href="https://www.instagram.com/antonlazurko" aria-label="Instagram" target="_blank">
+                    <img src="./static/icons/instagram.svg" alt="Instagram" />
                 </a>
-                <a href="https://linkedin.com" aria-label="Linkedin">
-                    <img src="./static/icons/linkedin.png" alt="Linkedin"/>
+                <a href="https://www.linkedin.com/in/anton-lazurko-837383206/" aria-label="Linkedin" target="_blank">
+                    <img src="./static/icons/linkedin.svg" alt="Linkedin"/>
+                </a>
+                <a href="https://github.com/antonlazurko/js-advanced/tree/book-library" aria-label="GitHub" target="_blank">
+                    <img src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub"/>
                 </a>
             </div>
             <div class="footer__copyright">
