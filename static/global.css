@@ -46,7 +46,7 @@ body{
     max-width: 80rem;
     margin: 0 auto;
     padding: 1rem;
-    min-height: 100vh;
+    min-height: 94vh;
 }
 main{
     flex: 1;

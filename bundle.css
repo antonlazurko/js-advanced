@@ -232,7 +232,6 @@ div.search{
     gap: 3rem;
 }
 
-/* Основной стиль для логотипа */
 .not-found-logo {
     display: flex;
     align-items: center;
@@ -244,12 +243,10 @@ div.search{
     margin-top: 2rem;
 }
 
-/* Стиль для чисел "4" */
 .not-found-logo__number {
     font-size: inherit;
 }
 
-/* Круг в центре, изображающий "0" */
 .not-found-logo__circle {
     width: 1em;
     height: 1em;
@@ -257,7 +254,6 @@ div.search{
     border-radius: 50%;
 }
 
-/* Текст под логотипом */
 .not-found-text {
     text-align: center;
     font-size: 1.25rem;
@@ -265,7 +261,6 @@ div.search{
     margin-top: 1rem;
 }
 
-/* Адаптивность */
 @media (max-width: 480px) {
     .not-found-logo {
         font-size: 3rem;
